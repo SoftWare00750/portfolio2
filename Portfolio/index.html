@@ -3,21 +3,133 @@
 
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stephen Otunla</title>
   <link rel="stylesheet" href="css/styles.css">
-<style>
-  .profile { position: relative; display: flex; flex-direction: column; align-items: center; }
-  .circle-container { position: relative; width: 220px; height: 220px; margin-bottom: 18px; }
-  .profile-img { width: 190px; height: 190px; border-radius: 50%; position: absolute; top: 15px; left: 15px; z-index: 1; }
-  
-  .circle-text { position: absolute; width: 100%; height: 100%; animation: rotate 10s linear infinite; }
-  @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-  .circle-text span { position: absolute; left: 50%; transform-origin: 0 110px; font-weight: bold; color: #66BFBF; }
-</style>
+  <style>
+    /* ── Profile / Rotating Circle ── */
+    .profile { position: relative; display: flex; flex-direction: column; align-items: center; }
+    .circle-container { position: relative; width: 220px; height: 220px; margin-bottom: 18px; }
+    .profile-img { width: 190px; height: 190px; border-radius: 50%; position: absolute; top: 15px; left: 15px; z-index: 1; }
+    .circle-text { position: absolute; width: 100%; height: 100%; animation: rotate 10s linear infinite; }
+    @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+    .circle-text span { position: absolute; left: 50%; transform-origin: 0 110px; font-weight: bold; color: #66BFBF; }
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-<script src="js/main.js"></script>
+    /* ── Mobile Responsive ── */
+    @media (max-width: 768px) {
+
+      /* Typography scale-down */
+      h1 { font-size: 3.2rem; margin: 30px auto 0; }
+      h2 { font-size: 1.6rem; }
+      h3 { font-size: 1.1rem; }
+      p  { font-size: 0.95rem; line-height: 1.8; }
+
+      /* Top hero section */
+      .top-container {
+        padding-top: 60px;
+        padding-bottom: 20px;
+        overflow: hidden;
+      }
+
+      /* Hide decorative clouds on small screens to avoid overflow */
+      .top-cloud,
+      .bottom-cloud { display: none; }
+
+      .mountain {
+        width: 100%;
+        max-width: 100%;
+        display: block;
+        margin: 0 auto;
+      }
+
+      /* Middle section */
+      .middle-container { margin: 50px 16px; }
+
+      /* Profile circle shrinks a touch */
+      .circle-container { width: 180px; height: 180px; }
+      .profile-img { width: 155px; height: 155px; top: 12px; left: 12px; }
+      .circle-text span { transform-origin: 0 90px; }
+
+      /* Intro paragraph */
+      .intro {
+        width: 90%;
+        margin: 16px auto;
+      }
+
+      /* HR dividers */
+      hr {
+        margin: 60px auto;
+        width: 8%;
+      }
+
+      /* Skill rows: stack vertically, full-width */
+      .skill-row {
+        width: 90%;
+        margin: 50px auto;
+        text-align: center;
+      }
+
+      /* Float images become block, centred */
+      .code-img,
+      .chilli-img {
+        float: none;
+        display: block;
+        width: 70%;
+        max-width: 260px;
+        height: auto;
+        margin: 0 auto 20px;
+      }
+
+      /* Contact section */
+      .contact-me { padding: 0 16px; }
+
+      .contact-message {
+        width: 90%;
+        margin: 20px auto 40px;
+      }
+
+      /* CTA button — full-width on mobile */
+      .btn {
+        display: block;
+        width: 80%;
+        max-width: 280px;
+        margin: 0 auto;
+        text-align: center;
+        font-size: 1rem;
+        padding: 14px 20px;
+        box-sizing: border-box;
+      }
+
+      /* Footer links wrap neatly */
+      .bottom-container {
+        padding: 40px 16px 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 4px;
+      }
+
+      .bottom-container a {
+        margin: 6px 12px;
+        font-size: 0.9rem;
+      }
+
+      .copyright { font-size: 0.7rem; width: 100%; text-align: center; }
+    }
+
+    /* Extra-small phones */
+    @media (max-width: 400px) {
+      h1 { font-size: 2.4rem; }
+      h2 { font-size: 1.3rem; }
+      .circle-container { width: 150px; height: 150px; }
+      .profile-img { width: 128px; height: 128px; top: 11px; left: 11px; }
+      .circle-text span { transform-origin: 0 75px; }
+    }
+  </style>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script src="js/main.js"></script>
   <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Sacramento" rel="stylesheet">
   <link rel="icon" href="favicon.png">
 </head>
@@ -35,41 +147,39 @@
 
   <div class="middle-container">
     <div class="profile">
-  <div class="circle-container">
-    <div class="circle-text" id="rotating-text"></div>
-    <img class="profile-img" src="images/stephen.png" alt="Stephen">
-  </div>
-  <h2 id="hello-text">Hello.</h2>
-  </div>
-      <p class="intro">I am an Mobile and Web Developer. <br>I'm am a Junior Developer.</br> I ❤️ gaming and grill my own wings.</p>
+      <div class="circle-container">
+        <div class="circle-text" id="rotating-text"></div>
+        <img class="profile-img" src="images/stephen.png" alt="Stephen">
+      </div>
+      <h2 id="hello-text">Hello.</h2>
     </div>
+    <p class="intro">I am a Mobile and Web Developer.<br>I'm a Junior Developer.<br>I ❤️ gaming and grill my own wings.</p>
+
     <hr>
+
     <div class="skills">
       <h2>My Skills.</h2>
       <div class="skill-row">
         <img class="code-img" src="images/webdevelopment.png" alt="code-img">
-
         <h3>Design & Development</h3>
         <p>I started learning to code when I was 18 years old because I wanted to make my own video games. Over time, I have gained a wealth of experience designing and developing mobile and web applications.</p>
-
       </div>
       <div class="skill-row">
         <img class="chilli-img" src="images/chillies.png" alt="chillies-img">
-
         <h3>Hot Wings Challenge</h3>
-        <p>But my best skill is actually in eating hot wings haha : ) . I am the undisputed king of hot wing challenges. hot wings and chips are my favourite snacks.</p>
-
+        <p>But my best skill is actually in eating hot wings haha : ) . I am the undisputed king of hot wing challenges. Hot wings and chips are my favourite snacks.</p>
       </div>
     </div>
+
     <hr>
+
     <div class="contact-me">
       <h2>Get In Touch</h2>
       <h3>If you love Creating as much as I do.</h3>
-      <p class="contact-message">Love Creating apps as much as I do? Let's talk about how awesome they are! We can code while we eat hot wings and chips!</p>
+      <p class="contact-message">Love creating apps as much as I do? Let's talk about how awesome they are! We can code while we eat hot wings and chips!</p>
       <a class="btn" href="mailto:damiotunla200@gmail.com">CONTACT ME</a>
     </div>
   </div>
-
 
   <div class="bottom-container">
     <a class="footer-link" href="https://www.linkedin.com/in/damilola-otunla-2245401b7/">LinkedIn</a>
