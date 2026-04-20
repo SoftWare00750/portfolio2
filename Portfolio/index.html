@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Stephen Otunla</title>
+  <link rel="stylesheet" href="css/styles.css">
+<style>
+  .profile { position: relative; display: flex; flex-direction: column; align-items: center; }
+  .circle-container { position: relative; width: 220px; height: 220px; margin-bottom: 18px; }
+  .profile-img { width: 190px; height: 190px; border-radius: 50%; position: absolute; top: 15px; left: 15px; z-index: 1; }
+  
+  .circle-text { position: absolute; width: 100%; height: 100%; animation: rotate 10s linear infinite; }
+  @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .circle-text span { position: absolute; left: 50%; transform-origin: 0 110px; font-weight: bold; color: #66BFBF; }
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+<script src="js/main.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Sacramento" rel="stylesheet">
+  <link rel="icon" href="favicon.png">
+</head>
+
+<body>
+  <div class="top-container">
+    <img class="top-cloud" src="images/cloud.png" alt="cloud">
+    <div class="title-text">
+      <h1>I'm Stephen.</h1>
+      <h2>a <span class="pro">dev</span>eloper.</h2>
+    </div>
+    <img class="bottom-cloud" src="images/cloud.png" alt="cloud">
+    <img class="mountain" src="images/mountain.png" alt="mountain-img">
+  </div>
+
+  <div class="middle-container">
+    <div class="profile">
+  <div class="circle-container">
+    <div class="circle-text" id="rotating-text"></div>
+    <img class="profile-img" src="images/stephen.png" alt="Stephen">
+  </div>
+  <h2 id="hello-text">Hello.</h2>
+  </div>
+      <p class="intro">I am an Mobile and Web Developer. <br>I'm am a Junior Developer.</br> I ❤️ gaming and grill my own wings.</p>
+    </div>
+    <hr>
+    <div class="skills">
+      <h2>My Skills.</h2>
+      <div class="skill-row">
+        <img class="code-img" src="images/webdevelopment.png" alt="code-img">
+
+        <h3>Design & Development</h3>
+        <p>I started learning to code when I was 18 years old because I wanted to make my own video games. Over time, I have gained a wealth of experience designing and developing mobile and web applications.</p>
+
+      </div>
+      <div class="skill-row">
+        <img class="chilli-img" src="images/chillies.png" alt="chillies-img">
+
+        <h3>Hot Wings Challenge</h3>
+        <p>But my best skill is actually in eating hot wings haha : ) . I am the undisputed king of hot wing challenges. hot wings and chips are my favourite snacks.</p>
+
+      </div>
+    </div>
+    <hr>
+    <div class="contact-me">
+      <h2>Get In Touch</h2>
+      <h3>If you love Creating as much as I do.</h3>
+      <p class="contact-message">Love Creating apps as much as I do? Let's talk about how awesome they are! We can code while we eat hot wings and chips!</p>
+      <a class="btn" href="mailto:damiotunla200@gmail.com">CONTACT ME</a>
+    </div>
+  </div>
+
+
+  <div class="bottom-container">
+    <a class="footer-link" href="https://www.linkedin.com/in/damilola-otunla-2245401b7/">LinkedIn</a>
+    <a class="footer-link" href="https://x.com/OtunlaS8612">X</a>
+    <a class="footer-link" href="https://github.com/SoftWare00750">Github</a>
+    <p class="copyright">© 2026 Stephen Otunla @ SoftWare Development.</p>
+  </div>
+</body>
+
+</html>
